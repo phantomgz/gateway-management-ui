@@ -88,10 +88,15 @@ setInterval(function() {
 function startGateway(ZigBeeNCP) {
   if(!gatewayProcess) {
     var baudSpecifier;
-    if (ZigBeeNCP.port == '/dev/ttyACM0') {
+    if(process.env.CTSRTS !== "true") {
+      if (ZigBeeNCP.port == '/dev/ttyACM0') {
+        baudSpecifier = '0';
+      } else {
+        baudSpecifier = '1';
+      }
+    }
+    else {
       baudSpecifier = '0';
-    } else {
-      baudSpecifier = '1';
     }
 
     if (!DeviceController.serverSettings.cliTerminal) {
