@@ -1,0 +1,6 @@
+crashlog.txt
+reactui/dist
+reactui/node_modules
+reactui/npm-debug.log
+nodeserver/node_modules
+.vscode
